@@ -90,6 +90,12 @@ public class SubjectProcess {
 						//result.add stack에서 pop된 작업이름
 						result.add(poppedWork.name);
 					}
+					else if (remainWorkTime == 0) {
+						//result.add stack에서 pop된 작업이름
+						result.add(poppedWork.name);
+						//break
+						remainTime = 0;
+					}
 					// 짜투리 작업시간 < 0
 					else {
 						// stack.push(작업이름, 남은시간(부호반전 짜투리작업시간)
