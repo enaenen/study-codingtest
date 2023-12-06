@@ -27,48 +27,37 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BoardMax {
+public class BoardMaxAdvanced {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
 		int[][] arr = new int[n][n];
 		int max = 0;
-		int oneLineMax;
+		int oneLineMax1, oneLineMax2;
 		// 가로 합
 		for (int i = 0; i < n; i++) {
-			oneLineMax = 0;
+			oneLineMax1 = oneLineMax2 = 0;
 			String[] line = br.readLine().split(" ");
 			for (int j = 0; j < n; j++) {
 				arr[i][j] = Integer.parseInt(line[j]);
-				oneLineMax += arr[i][j];
+				oneLineMax1 += arr[i][j]; // 가로합
+				oneLineMax2 += arr[j][i]; // 세로합
 			}
-			max = Math.max(max, oneLineMax);
+			max = Math.max(max, oneLineMax1);
+			max = Math.max(max, oneLineMax2);
 		}
 
-		//세로 합
-		for (int i = 0; i < n; i++) {
-			oneLineMax = 0;
-			for (int j = 0; j < n; j++) {
-				oneLineMax+= arr[j][i];
-			}
-			max = Math.max(max, oneLineMax);
-		}
+		// 양방향 대각선
+		oneLineMax1 = 0;
+		oneLineMax2 = 0;
 
-		//왼위 -> 오아래 대각선
-		oneLineMax = 0;
 		for (int i = 0; i < n; i++){
-			oneLineMax += arr[i][i];
+			oneLineMax1 += arr[i][i]; // 왼위 - 오아래
+			oneLineMax2 += arr[i][n - 1 - i]; //오위 -> 왼아래
 		}
-		max = Math.max(max, oneLineMax);
-
-
-		//오위 -> 왼 아래 대각선
-		oneLineMax = 0;
-		for (int i = 0; i < n; i++){
-			oneLineMax += arr[i][n - 1 - i];
-		}
-		max = Math.max(max, oneLineMax);
+		max = Math.max(max, oneLineMax1);
+		max = Math.max(max, oneLineMax2);
 
 		System.out.println(max);
 	}
