@@ -1,4 +1,4 @@
-package codingtest.programmers;
+package codingtest.programmers.level2;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package codingtest.programmers;
+package codingtest.programmers.level2;
 //https://school.programmers.co.kr/learn/courses/30/lessons/12938#
 public class BestGroup {
 
