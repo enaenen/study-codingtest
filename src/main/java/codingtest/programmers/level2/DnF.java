@@ -1,4 +1,4 @@
-package codingtest.programmers;
+package codingtest.programmers.level2;
 
 import java.util.Arrays;
 //https://school.programmers.co.kr/learn/courses/30/lessons/87946
