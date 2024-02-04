@@ -24,66 +24,47 @@ public class Application {
 			this.z = z;
 		}
 	}
+	static class Person {
+		public int age;
+		public String name;
+
+		public Person(int age, String name) {
+			this.age = age;
+			this.name = name;
+		}
+		public int diff(Person other){
+			return age - other.age;
+		}
+
+		@Override
+		public String toString() {
+			return "Person{" +
+					"age=" + age +
+					", name='" + name + '\'' +
+					'}';
+		}
+	}
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		ArrayList<Person> list = new ArrayList<Person>();
+		Person p1 = new Person(10, "ABC");
+		Person p2 = new Person(20, "EFG");
+		Person p3 = new Person(30, "HIK");
+		list.add(p1);
+		list.add(p2);
+		list.add(p3);
 
-		String[] input = br.readLine().split(" ");
-		int M = Integer.parseInt(input[0]);
-		int N = Integer.parseInt(input[1]);
-		int H = Integer.parseInt(input[2]);
+//		list.sort(
+//				(Person o1,Person o2) -> p1.name.compareTo(p2.name)
+//		);
+		Comparator<Person> comp = Comparator.comparing(h -> h.name);
+		list.sort(comp.reversed());
+//		list.sort(comp);
 
-		int[][][] board = new int[M][N][H];
-		int[][][] dist = new int[M][N][H];
-		int[] dirX = new int[]{1, -1, 0, 0, 0, 0};
-		int[] dirY = new int[]{0, 0, 1, -1, 0, 0};
-		int[] dirZ = new int[]{0, 0, 0, 0, 1, -1};
-
-		Queue<Location> queue = new LinkedList<>();
-		queue.offer(new Location(0, 0, 0));
-		for (int k = 0; k < H; k++) {
-			for (int i = 0; i < M; i++) {
-				String line = br.readLine();
-				for (int j = 0; j < N; j++) {
-					board[i][j][k] = line.charAt(j) - '0';
-					dist[i][j][k] = -1;
-					if (line.charAt(j) == '1') {
-						queue.offer(new Location(i, j, k));
-						dist[i][j][k] = 0;
-					}
-				}
-			}
+		for (Person person : list) {
+			System.out.println("person = " + person);
 		}
 
-		while (!queue.isEmpty()) {
-			Location cur = queue.poll();
-			for (int i = 0; i < 6; i++) {
-				int nx = cur.x + dirX[i];
-				int ny = cur.y + dirY[i];
-				int nz = cur.z + dirZ[i];
 
-				if (nx < 0 || ny < 0 || nz < 0 || nx >= M || ny >= N || nz >= H) {
-					continue;
-				}
-				if (dist[ny][nx][nz] >= 0 || board[ny][nx][nz] != 1) {
-					continue;
-				}
-				dist[ny][nx][nz] = dist[cur.y][cur.x][cur.z] + 1;
-				queue.offer(new Location(ny,nx,nz));
-			}
-		}
-		int count = 1;
-		for (int i = 0; i < H; i++){
-			for (int j = 0; j < M; j++){
-				for (int k = 0; k < N; k++){
-					if (dist[j][k][i] == -1){
-						System.out.println(-1);
-						return;
-					}
-					count = Math.min(count,dist[j][k][i]);
-				}
-			}
-		}
-		System.out.println(count);
 	}
 }
