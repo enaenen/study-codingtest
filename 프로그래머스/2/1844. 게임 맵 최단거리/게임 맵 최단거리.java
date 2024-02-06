@@ -12,16 +12,15 @@ class Solution {
     public int solution(int[][] maps) {
         int answer = 0;
         
-        // Stack<Pair> stack = new Stack<>();
-        Queue<Pair> stack = new LinkedList<>();
+        Queue<Pair> queue = new LinkedList<>();
         int[][] dist = new int[maps.length][maps[0].length];
         int[] dx = new int[] {1,-1,0,0};
         int[] dy = new int[] {0,0,-1,1};
         
-        stack.offer(new Pair(0, 0));
+        queue.offer(new Pair(0, 0));
         dist[0][0] = 1;
-        while (!stack.isEmpty()){
-            Pair p = stack.poll();
+        while (!queue.isEmpty()){
+            Pair p = queue.poll();
             int curX = p.x;
             int curY = p.y;
             for (int i = 0; i < 4; i++){
@@ -32,7 +31,7 @@ class Solution {
                     continue;
                 if (maps[nY][nX] != 1 || dist[nY][nX] > 0)
                     continue;
-                stack.offer(new Pair(nY, nX));
+                queue.offer(new Pair(nY, nX));
                 dist[nY][nX] = dist[curY][curX] + 1;
             }
         }
