@@ -1,4 +1,4 @@
-package codingtest.basic.recursion;
+package codingtest.basic.bfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
