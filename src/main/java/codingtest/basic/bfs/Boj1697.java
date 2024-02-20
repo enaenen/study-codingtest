@@ -3,6 +3,7 @@ package codingtest.basic.bfs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -17,9 +18,7 @@ public class Boj1697 {
 		Queue<Integer> que = new LinkedList<>();
 		que.offer(N);
 		int[] dist = new int[100001];
-		for (int i = 0; i < dist.length; i++) {
-			dist[i] = -1;
-		}
+		Arrays.fill(dist, -1);
 		dist[N] = 0;
 		while (dist[K] == -1) {
 			int cur = que.poll();
