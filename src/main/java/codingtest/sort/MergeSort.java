@@ -25,7 +25,18 @@ public class MergeSort {
 		mergeSort(arr, mid + 1, right);
 
 		merge(arr, left, mid, right);
+	}
 
+	public static void mergeSortBottomUp(int[] arr, int left, int right){
+		// 1 - 2 - 4 - 8 ...
+		for (int i = 1; i <= right; i+=i){
+			for (int j = 0; j <= right - i; i +=(2*i)){
+				int low = j;
+				int mid = j + i - 1;
+				int high = Math.min(j + (2*i) - 1, right);
+				merge(arr, low, mid, high);
+			}
+		}
 	}
 
 	private static void merge(int[] arr, int left, int mid, int right) {
