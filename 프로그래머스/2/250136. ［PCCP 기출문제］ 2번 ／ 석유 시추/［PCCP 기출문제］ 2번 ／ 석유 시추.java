@@ -4,19 +4,25 @@ import java.util.*;
 class Solution {
     public int solution(int[][] land) {
         int answer = 0;
-        int[][] dir = new int[][] {{0,1},{0,-1},{1,0},{-1,0}};
-        boolean[][] visited = new boolean[land.length][land[0].length];
+        final int[][] dir = new int[][] {{0,1},{0,-1},{1,0},{-1,0}};
+        
         Queue<Position> que = new LinkedList<>();
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Set<Integer> set = new HashSet<Integer>();
+        
+        int area = 2;
         
         for(int i = 0; i < land[0].length; i++){
-            int count = 0;
-            visited = new boolean[land.length][land[0].length];
+
+            
             for (int j = 0; j < land.length; j++){
-                if (land[j][i] == 1 && !visited[j][i]){
+                int count = 0;
+                if (land[j][i] == 1){
+                    set.add(area);
+                    land[j][i] = area;
                     que.offer(new Position(j,i));
                     while (!que.isEmpty()){
                         Position cur = que.poll();
-                        visited[cur.y][cur.x] = true;
                         count++;
                         
                         for (int k = 0; k < 4; k++){
@@ -24,15 +30,34 @@ class Solution {
                             int nextY = cur.y + dir[k][1];
                             
                             if (nextY < 0 || nextX < 0 || nextX >= land[0].length || nextY >= land.length) continue;
-                            if (visited[nextY][nextX] || land[nextY][nextX] == 0) continue;
+                            if (land[nextY][nextX] != 1) continue;
                             
                             que.offer(new Position(nextY,nextX));
-                            visited[nextY][nextX] =true;
+                            land[nextY][nextX] = area;
                         }
                     }
+                    map.put(area++, count);
                 }
-                answer = Math.max(answer, count);
+                else if (land[j][i] > 1){
+                    set.add(land[j][i]);
+                }
+            
             }
+            int total = 0;
+            for(Integer areas : set){
+                // System.out.println("areas = " + areas);
+                // System.out.println("value = " + map.getOrDefault(areas, 0));
+                
+                total += map.getOrDefault(areas, 0);
+            }
+            // for (Map.Entry<Integer, Integer> val : map.entrySet()){
+            //     System.out.println(val);
+            // }
+            // System.out.println("total = "+ total);
+            // System.out.println("i = " + i);
+            answer = Math.max(answer, total);
+            // System.out.println();
+            set.clear();
         }
         return answer;
     }
