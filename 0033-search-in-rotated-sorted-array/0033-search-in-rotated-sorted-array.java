@@ -28,7 +28,7 @@ class Solution {
 					end = mid;
 				}
 			} else {
-				if (nums[mid] < nums[start] && nums[start] <= target) { //뒤집힌경우 + 타겟이 mid 기준 앞쪽 어딘가 있는경우
+				if (nums[mid] < nums[start] && nums[start] < target) { //뒤집힌경우 + 타겟이 mid 기준 앞쪽 어딘가 있는경우
 					end = mid;//앞쪽에서 찾기
 				} else {
 					start = mid;//뒤쪽에서 찾기
