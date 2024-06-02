@@ -7,12 +7,10 @@ class Solution {
 
         while (end < nums.length){
             total += nums[end];
-            if (target <= total){
-                while (target <= total){
+            while (target <= total){
                 arrayCount = Math.min(arrayCount, end - start + 1);
                 total -= nums[start++];
                 }
-            }
             end++;
         }
         if (start == 0) return 0;
