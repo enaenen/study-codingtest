@@ -20,6 +20,5 @@ class Solution {
         }
         if (start == 0) return 0;
         return arrayCount;
-
     }
 }
