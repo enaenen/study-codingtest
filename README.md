@@ -23,8 +23,13 @@
 |  |
 | ------- |
 | [0120-triangle](https://github.com/enaenen/study-codingtest/tree/master/0120-triangle) |
+| [1206-corporate-flight-bookings](https://github.com/enaenen/study-codingtest/tree/master/1206-corporate-flight-bookings) |
 ## Dynamic Programming
 |  |
 | ------- |
 | [0120-triangle](https://github.com/enaenen/study-codingtest/tree/master/0120-triangle) |
+## Prefix Sum
+|  |
+| ------- |
+| [1206-corporate-flight-bookings](https://github.com/enaenen/study-codingtest/tree/master/1206-corporate-flight-bookings) |
 <!---LeetCode Topics End-->
