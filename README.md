@@ -23,8 +23,24 @@
 |  |
 | ------- |
 | [0120-triangle](https://github.com/enaenen/study-codingtest/tree/master/0120-triangle) |
+| [0198-house-robber](https://github.com/enaenen/study-codingtest/tree/master/0198-house-robber) |
+| [1095-two-city-scheduling](https://github.com/enaenen/study-codingtest/tree/master/1095-two-city-scheduling) |
+| [1206-corporate-flight-bookings](https://github.com/enaenen/study-codingtest/tree/master/1206-corporate-flight-bookings) |
 ## Dynamic Programming
 |  |
 | ------- |
 | [0120-triangle](https://github.com/enaenen/study-codingtest/tree/master/0120-triangle) |
+| [0198-house-robber](https://github.com/enaenen/study-codingtest/tree/master/0198-house-robber) |
+## Prefix Sum
+|  |
+| ------- |
+| [1206-corporate-flight-bookings](https://github.com/enaenen/study-codingtest/tree/master/1206-corporate-flight-bookings) |
+## Greedy
+|  |
+| ------- |
+| [1095-two-city-scheduling](https://github.com/enaenen/study-codingtest/tree/master/1095-two-city-scheduling) |
+## Sorting
+|  |
+| ------- |
+| [1095-two-city-scheduling](https://github.com/enaenen/study-codingtest/tree/master/1095-two-city-scheduling) |
 <!---LeetCode Topics End-->
