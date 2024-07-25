@@ -1,18 +1,20 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        int result = 0;
-
-        int[] dp = new int[nums.length];
-        Arrays.fill(dp, 1);
+        PriorityQueue<Integer> pq = new PriorityQueue(Collections.reverseOrder());
+        pq.offer(nums[0]);
 
         for (int i = 1; i < nums.length; i++){
-            for (int j = 0; j < i; j++){
-                if (nums[i] > nums[j]){
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
+            if (nums[i] > pq.peek()) pq.add(nums[i]);
+            else {
+                // num[i] 보다 같거나 큰 수를 찾음 in subList
+                for (int j = 0; j < subList.size(); j++){
+                    if (subList.get(j) >= nums[i]) {
+                        subList.set(j, nums[i]); 
+                        break;
+                    }
                 }
             }
         }
-        for (int n : dp) result = Math.max(result, n);
-        return result;
+        return subList.size();
     }
 }
